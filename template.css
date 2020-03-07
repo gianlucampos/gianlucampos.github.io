@@ -2,17 +2,6 @@ body {
     background-color:rgb(19, 69, 163);
 }
 
-a {
-  background-color: rgb(168, 168, 168);
-  color: white;
-  padding: 1em 1.5em;
-  font-weight: bolder;
-  text-decoration: none;
-  text-transform: uppercase;
-  position: absolute;
-  left: 35%;
-}
-
   .centro {
     margin: 0;
     position: absolute;
@@ -32,8 +21,6 @@ a {
     font-size: 20px;
     font-weight: lighter;
     color: rgba(226, 226, 216, 0.575);
-    /* margin-left: 20%; */
-    /* color: royalblue; */
   }
 
   .curriculo {
