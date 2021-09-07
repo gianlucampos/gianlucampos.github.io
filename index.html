@@ -13,14 +13,17 @@
         <div class="centro">
             <h1 class="name">Gianluca Campos</h1>
             <h3 class="email">gianlucampos97@gmail.com</h3>
-            <a class="curriculo" href="cv.html">Currículo</a>
+            <a id="curriculo" class="curriculo" href="cv_en.html">Resume</a>
         </div>
     </section>
 </body>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     var userLang = navigator.language || navigator.userLanguage;
-    alert("The language is: " + userLang);
-</script> -->
+    if (userLang === 'pt-BR') {
+        document.getElementById("curriculo").href = 'cv.html';
+        document.getElementById("curriculo").innerHTML = 'Currículo';
+    }
+</script>
 
 </html>
