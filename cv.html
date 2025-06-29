@@ -228,7 +228,7 @@
             </div>
 
             <div class="w3-twothird">
-                <div id="experience"></div>
+                <div id="experience-container"></div>
 
                 <!-- Formação Acadêmica -->
                 <div class="w3-container w3-card w3-white">
@@ -254,10 +254,47 @@
     </div>
 
     <script>
+        let currentExperiencePage = 1;
+
+        function showExperiencePage(page) {
+            const container = document.getElementById('experience-container');
+            const pages = container.querySelectorAll('.experience-page');
+            const totalPages = pages.length;
+
+            pages.forEach((el, idx) => {
+                el.style.display = (idx === page - 1) ? 'block' : 'none';
+            });
+
+            const indicator = container.querySelector('#page-indicator');
+            if (indicator) indicator.textContent = `${page} / ${totalPages}`;
+
+            // Desabilita botões conforme página atual
+            const btnPrev = container.querySelector('button[onclick="changeExperiencePage(-1)"]');
+            const btnNext = container.querySelector('button[onclick="changeExperiencePage(1)"]');
+
+            if (btnPrev) btnPrev.disabled = (page === 1);
+            if (btnNext) btnNext.disabled = (page === totalPages);
+        }
+
+        function changeExperiencePage(direction) {
+            const container = document.getElementById('experience-container');
+            const pages = container.querySelectorAll('.experience-page');
+            const totalPages = pages.length;
+
+            currentExperiencePage += direction;
+            if (currentExperiencePage < 1) currentExperiencePage = 1;
+            if (currentExperiencePage > totalPages) currentExperiencePage = totalPages;
+
+            showExperiencePage(currentExperiencePage);
+        }
+
+        // Deixa as funções acessíveis globalmente (para os botões funcionarem)
+        window.changeExperiencePage = changeExperiencePage;
+
         fetch('experience.html')
             .then(res => res.text())
             .then(html => {
-                document.getElementById('experience').innerHTML = html;
+                document.getElementById('experience-container').innerHTML = html;
             })
             .catch(err => console.error('Erro ao carregar experiência', err))
     </script>
